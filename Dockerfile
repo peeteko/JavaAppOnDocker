@@ -9,5 +9,6 @@ RUN keytool -import -trustcacerts -file cloud_intermediate.cer -alias cloud_inte
 	keytool -list -v -keystore cacerts -storepass changeit -alias cloud_root
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
-ADD target/JavaAppOnDocker-0.0.1-SNAPSHOT.jar target/JavaAppOnDocker-0.0.1-SNAPSHOT.jar
+EXPOSE 8085
+ADD target/JavaAppOnDocker-0.0.1-SNAPSHOT.jar /JavaAppOnDocker-0.0.1-SNAPSHOT.jar
 ENTRYPOINT ["java", "-jar", "/JavaAppOnDocker-0.0.1-SNAPSHOT.jar"]
